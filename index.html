@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="stylesheet" href="style1.css"> -->
+    <link rel="stylesheet" href="style2.css">
+    <!-- <script src="script.js"></script> -->
+    <script src="script1.js"></script>
+    <title>Himalaya Adventures - Nepal Trekking Specialists</title>
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showSection('home')">🏔️ Himalaya Adventures</a>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('treks')">Treks</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('blog')">Blog</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+                <li><a onclick="showSection('faq')">FAQ</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Nepal's Majesty</h1>
+            <p>Experience the world's highest peaks with expert local guides. From Everest Base Camp to Annapurna Circuit, create memories that last a lifetime.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn" onclick="showSection('treks')">Explore Treks</a>
+                <a href="#" class="btn btn-outline" onclick="showSection('contact')">Plan Your Trek</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trek Listings Section -->
+    <section id="treks" class="section-hidden">
+        <h2 class="section-title">Our Featured Treks</h2>
+        
+        <div class="filters">
+            <select class="filter-select" id="regionFilter">
+                <option value="">All Regions</option>
+                <option value="everest">Everest Region</option>
+                <option value="annapurna">Annapurna Region</option>
+                <option value="langtang">Langtang Region</option>
+                <option value="manaslu">Manaslu Region</option>
+            </select>
+            <select class="filter-select" id="difficultyFilter">
+                <option value="">All Difficulties</option>
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="challenging">Challenging</option>
+                <option value="strenuous">Strenuous</option>
+            </select>
+            <select class="filter-select" id="durationFilter">
+                <option value="">All Durations</option>
+                <option value="short">1-7 days</option>
+                <option value="medium">8-14 days</option>
+                <option value="long">15+ days</option>
+            </select>
+        </div>
+
+        <div class="trek-grid" id="trekGrid">
+            <!-- Trek cards will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Trek Detail Section -->
+    <section id="trek-detail" class="section-hidden">
+        <div class="trek-detail-hero">
+            <div class="hero-content">
+                <h1 id="detailTitle">Trek Name</h1>
+                <p id="detailSubtitle">Detailed trek information</p>
+            </div>
+        </div>
+        
+        <div class="detail-content">
+            <div>
+                <div id="detailDescription">
+                    <!-- Description will be populated by JavaScript -->
+                </div>
+                
+                <div class="itinerary">
+                    <h3>Daily Itinerary</h3>
+                    <div id="itineraryContent">
+                        <!-- Itinerary will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="reviews">
+                    <h3>Trekker Reviews</h3>
+                    <div id="reviewsContent">
+                        <!-- Reviews will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="detail-meta">
+                    <h3>Trek Details</h3>
+                    <ul class="meta-list" id="trekMeta">
+                        <!-- Meta info will be populated by JavaScript -->
+                    </ul>
+                </div>
+                <button class="btn" style="width: 100%; margin-bottom: 1rem;" onclick="showSection('booking')">Book Now</button>
+                <button class="btn btn-outline" style="width: 100%; background: transparent; color: #ff6b35; border: 2px solid #ff6b35;" onclick="showSection('contact')">Inquire</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-hidden">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="form-container">
+            <div class="success-message" id="contactSuccess">
+                Thank you for your inquiry! We'll get back to you within 24 hours.
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="trek-interest">Interested Trek</label>
+                    <select id="trek-interest" name="trek-interest">
+                        <option value="">Select a trek</option>
+                        <option value="everest-base-camp">Everest Base Camp</option>
+                        <option value="annapurna-circuit">Annapurna Circuit</option>
+                        <option value="langtang-valley">Langtang Valley Trek</option>
+                        <option value="manaslu-circuit">Manaslu Circuit</option>
+                        <option value="gokyo-lakes">Gokyo Lakes Trek</option>
+                        <option value="upper-mustang">Upper Mustang Trek</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="travel-date">Preferred Travel Date</label>
+                    <input type="date" id="travel-date" name="travel-date">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your trekking experience, group size, and any special requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section-hidden">
+        <h2 class="section-title">Book Your Trek</h2>
+        <div class="form-container">
+            <div class="success-message" id="bookingSuccess">
+                Booking request submitted successfully! We'll confirm availability and send you payment details within 24 hours.
+            </div>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="book-name">Full Name</label>
+                    <input type="text" id="book-name" name="book-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-email">Email Address</label>
+                    <input type="email" id="book-email" name="book-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-trek">Select Trek</label>
+                    <select id="book-trek" name="book-trek" required>
+                        <option value="">Choose your trek</option>
+                        <option value="everest-base-camp">Everest Base Camp - $1,299</option>
+                        <option value="annapurna-circuit">Annapurna Circuit - $899</option>
+                        <option value="langtang-valley">Langtang Valley Trek - $649</option>
+                        <option value="manaslu-circuit">Manaslu Circuit - $1,199</option>
+                        <option value="gokyo-lakes">Gokyo Lakes Trek - $1,099</option>
+                        <option value="upper-mustang">Upper Mustang Trek - $1,499</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="group-size">Group Size</label>
+                    <select id="group-size" name="group-size" required>
+                        <option value="">Select group size</option>
+                        <option value="1">Solo Trekker</option>
+                        <option value="2">2 People</option>
+                        <option value="3-5">3-5 People</option>
+                        <option value="6-10">6-10 People</option>
+                        <option value="10+">10+ People</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="start-date">Preferred Start Date</label>
+                    <input type="date" id="start-date" name="start-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="special-requests">Special Requests</label>
+                    <textarea id="special-requests" name="special-requests" placeholder="Dietary requirements, medical conditions, equipment needs, etc."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-hidden">
+        <h2 class="section-title">About Himalaya Adventures</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 3rem;">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #666;">
+                With over 15 years of experience in the Himalayas, we are Nepal's premier trekking specialists. 
+                Our local expertise, commitment to safety, and passion for the mountains ensure you have the 
+                adventure of a lifetime while supporting local communities.
+            </p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-avatar">🧗‍♂️</div>
+                <h3>Pemba Sherpa</h3>
+                <p><strong>Founder & Lead Guide</strong></p>
+                <p>20+ years guiding experience, Everest summiteer, certified wilderness first aid instructor.</p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">🏔️</div>
+                <h3>Sarah Johnson</h3>
+                <p><strong>Operations Manager</strong></p>
+                <p>International tourism expert, fluent in Nepali, specializes in custom trek planning.</p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">🎒</div>
+                <h3>Ang Dorje</h3>
+                <p><strong>Senior Guide</strong></p>
+                <p>15+ years experience, expert in high-altitude medicine, speaks 4 languages.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <h3>Why Choose Us?</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div>
+                    <h4>🛡️ Safety First</h4>
+                    <p>All guides are wilderness first aid certified with satellite communication devices.</p>
+                </div>
+                <div>
+                    <h4>🏘️ Local Impact</h4>
+                    <p>We support local communities and practice sustainable, responsible tourism.</p>
+                </div>
+                <div>
+                    <h4>🎯 Personalized</h4>
+                    <p>Every trek is customized to your fitness level and interests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section-hidden">
+        <h2 class="section-title">Trekking Tips & Guides</h2>
+        <div class="blog-grid">
+            <div class="blog-card" onclick="showBlogPost('altitude-sickness')">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <h3>Complete Guide to Altitude Sickness</h3>
+                    <p>Learn how to recognize, prevent, and treat altitude sickness during your Himalayan trek.</p>
+                    <small>Published: March 15, 2024</small>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showBlogPost('packing-list')">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <h3>Ultimate Trekking Packing List</h3>
+                    <p>Everything you need to pack for a successful trek in Nepal, from gear to clothing.</p>
+                    <small>Published: March 10, 2024</small>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showBlogPost('best-seasons')">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <h3>Best Seasons for Trekking in Nepal</h3>
+                    <p>Detailed weather guide to help you choose the perfect time for your trek.</p>
+                    <small>Published: March 5, 2024</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Detail -->
+    <section id="blog-post" class="section-hidden">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <a href="#" onclick="showSection('blog')" style="color: #ff6b35; text-decoration: none; margin-bottom: 2rem; display: inline-block;">← Back to Blog</a>
+            <div id="blogPostContent">
+                <!-- Blog post content will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-hidden">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Do I need a visa to visit Nepal?
+                </button>
+                <div class="faq-answer">
+                    <p>Most tourists can obtain a visa on arrival at Tribhuvan International Airport in Kathmandu or at land borders. You can also apply for an e-visa online before traveling. The cost varies by duration: 15 days ($30), 30 days ($50), or 90 days ($125).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What level of fitness do I need for trekking?
+                </button>
+                <div class="faq-answer">
+                    <p>Fitness requirements vary by trek. Easy treks require basic fitness, while challenging treks like Everest Base Camp need good cardiovascular endurance. We recommend starting training 3-4 months before your trek with regular hiking, cardio, and strength exercises.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What gear do I need to bring vs. rent locally?
+                </button>
+                <div class="faq-answer">
+                    <p>Bring personal items like hiking boots, clothing layers, and rain gear. Heavy items like sleeping bags, down jackets, and trekking poles can be rented in Kathmandu at a fraction of the cost of buying new gear.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    How do you ensure safety during treks?
+                </button>
+                <div class="faq-answer">
+                    <p>All our guides are wilderness first aid certified and carry satellite communication devices. We maintain conservative itineraries with proper acclimatization days, monitor weather conditions closely, and have evacuation procedures in place.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What's included in the trek price?
+                </button>
+                <div class="faq-answer">
+                    <p>Our prices typically include accommodation during the trek, meals, permits, guide and porter services, and transportation to/from trailheads. International flights, Nepal visa, personal gear, and tips are not included.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Can I trek solo or do I need a group?
+                </button>
+                <div class="faq-answer">
+                    <p>You can trek solo with a guide, which many of our clients prefer for the personalized experience. We also organize group treks and can match you with other solo travelers if you prefer company.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What's the best time to trek in Nepal?
+                </button>
+                <div class="faq-answer">
+                    <p>The best seasons are pre-monsoon (March-May) and post-monsoon (October-December). Spring offers rhododendron blooms and clear weather, while autumn provides crystal-clear mountain views and stable weather conditions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    How do I deal with altitude sickness?
+                </button>
+                <div class="faq-answer">
+                    <p>Prevention is key: ascend gradually, stay hydrated, avoid alcohol, and listen to your body. Our itineraries include proper acclimatization days. If symptoms develop, the only cure is descent to lower altitude.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h3>🏔️ Himalaya Adventures</h3>
+                    <p>Your trusted partner for unforgettable Himalayan experiences since 2008.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <p><a href="#" onclick="showSection('treks')" style="color: #ccc; text-decoration: none;">Popular Treks</a></p>
+                    <p><a href="#" onclick="showSection('about')" style="color: #ccc; text-decoration: none;">About Us</a></p>
+                    <p><a href="#" onclick="showSection('blog')" style="color: #ccc; text-decoration: none;">Blog</a></p>
+                    <p><a href="#" onclick="showSection('contact')" style="color: #ccc; text-decoration: none;">Contact</a></p>
+                </div>
+                <div>
+                    <h4>Contact Info</h4>
+                    <p>📧 info@himalayaadventures.com</p>
+                    <p>📞 +977-1-4123456</p>
+                    <p>📍 Thamel, Kathmandu, Nepal</p>
+                </div>
+            </div>
+            <hr style="border: 1px solid #555; margin: 2rem 0;">
+            <p>&copy; 2024 Himalaya Adventures. All rights reserved. | Licensed by Nepal Tourism Board</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
